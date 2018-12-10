@@ -12,13 +12,40 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    static $password;
+$factory->define(App\Program::class, function (Faker\Generator $faker) {
+
+    $price = $faker->randomDigitNotNull * 100000;
 
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'judul' => $faker->sentence(2),
+        'deskripsi' => $faker->sentence,
+        'harga' => $price,
+        'dp' => $price * 0.3,
+    ];
+});
+
+$factory->define(App\Materi::class, function(Faker\Generator $faker){
+
+    return [
+        "program_id" => App\Program::all()->random()->id,
+        "judul" => "Materi ".$faker->sentence(3),
+    ];
+});
+
+
+$factory->define(App\Materi::class, function(Faker\Generator $faker){
+    
+    return [
+        "program_id" => App\Program::all()->random()->id,
+        "judul" => "Materi ".$faker->sentence(3),
+    ];
+});
+
+$factory->define(App\Bab::class, function(Faker\Generator $faker){
+    
+    return [
+        "materi_id" => App\Materi::all()->random()->id,
+        "judul" => "Bab ".$faker->sentence(3),
+        "rangkuman" => $faker->realText(100, 2)
     ];
 });
