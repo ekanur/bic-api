@@ -13,7 +13,14 @@ class Beasiswa extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('beasiswa', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('judul');
+            $table->string('subtitle');
+            $table->text("deskripsi");
+            $table->softDeletes();
+            $table->timestamps();
+        });
     }
 
     /**

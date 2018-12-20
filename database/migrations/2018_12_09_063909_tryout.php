@@ -13,7 +13,12 @@ class Tryout extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('tryout', function (Blueprint $table) {
+            $table->increments('id');
+            $table->judul("judul");
+            $table->softDeletes();
+            $table->timestamps();
+        });
     }
 
     /**

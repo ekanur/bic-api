@@ -13,7 +13,12 @@ class Pengumuman extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('pengumuman', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string("judul");
+            $table->string("deskripsi");
+            $table->timestamps();
+        });
     }
 
     /**

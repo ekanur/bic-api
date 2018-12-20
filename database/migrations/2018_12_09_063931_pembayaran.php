@@ -13,7 +13,11 @@ class Pembayaran extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('pembayaran', function (Blueprint $table) {
+            $table->increments('id');
+            
+            $table->timestamps();
+        });
     }
 
     /**
