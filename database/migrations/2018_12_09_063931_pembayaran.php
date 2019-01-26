@@ -15,7 +15,8 @@ class Pembayaran extends Migration
     {
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->increments('id');
-            
+            $table->integer("user_id");
+            $table->integer("program_id");
             $table->timestamps();
         });
     }

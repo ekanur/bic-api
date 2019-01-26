@@ -13,16 +13,6 @@ class Program extends Migration
      */
     public function up()
     {
-        //
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
         Schema::create('program', function (Blueprint $table) {
             $table->increments('id');
             $table->string("judul");
@@ -32,5 +22,15 @@ class Program extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        
     }
 }

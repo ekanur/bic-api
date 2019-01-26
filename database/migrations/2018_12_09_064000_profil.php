@@ -13,7 +13,11 @@ class Profil extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('profil', function (Blueprint $table) {
+            $table->increments('id');
+            
+            $table->timestamps();
+        });
     }
 
     /**

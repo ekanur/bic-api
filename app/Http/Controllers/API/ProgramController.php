@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Program;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Transformers\ProgramTransformer;
 
 class ProgramController extends Controller
 {
@@ -15,7 +16,7 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        //
+        return fractal(Program::all(), new ProgramTransformer())->respond();
     }
 
     /**
@@ -47,7 +48,7 @@ class ProgramController extends Controller
      */
     public function show(Program $program)
     {
-        //
+        return fractal($program, new ProgramTransformer())->respond();
     }
 
     /**

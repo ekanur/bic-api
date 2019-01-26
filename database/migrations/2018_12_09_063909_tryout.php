@@ -15,7 +15,7 @@ class Tryout extends Migration
     {
         Schema::create('tryout', function (Blueprint $table) {
             $table->increments('id');
-            $table->judul("judul");
+            $table->string("judul");
             $table->softDeletes();
             $table->timestamps();
         });

@@ -13,11 +13,7 @@ class BukuPretest extends Migration
      */
     public function up()
     {
-        Schema::create('buku_pretest', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('');
-            $table->timestamps();
-        });
+    
     }
 
     /**
