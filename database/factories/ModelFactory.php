@@ -33,19 +33,21 @@ $factory->define(App\Materi::class, function(Faker\Generator $faker){
 });
 
 
-$factory->define(App\Materi::class, function(Faker\Generator $faker){
-    
-    return [
-        "program_id" => App\Program::all()->random()->id,
-        "judul" => "Materi ".$faker->sentence(3),
-    ];
-});
-
 $factory->define(App\Bab::class, function(Faker\Generator $faker){
     
     return [
         "materi_id" => App\Materi::all()->random()->id,
         "judul" => "Bab ".$faker->sentence(3),
         "rangkuman" => $faker->realText(100, 2)
+    ];
+});
+
+$factory->define(App\Pengumuman::class, function(Faker\Generator $faker){
+    
+    return [
+        "user_id" => App\User::all()->random()->id,
+        "judul" => "Bab ".$faker->sentence(3),
+        "deskripsi" => $faker->realText(100, 2),
+        "unread" => rand(0,1)
     ];
 });

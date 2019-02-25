@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Pengumuman;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Transformers\PengumumanTransformer;
 
 class PengumumanController extends Controller
 {
@@ -15,7 +16,7 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        //
+        return fractal(Pengumuman::where("user_id", auth()->user()->id)->get(), new PengumumanTransformer())->respond();
     }
 
     /**
@@ -47,7 +48,7 @@ class PengumumanController extends Controller
      */
     public function show(Pengumuman $pengumuman)
     {
-        //
+        return fractal($pengumuman, new PengumumanTransformer())->respond();
     }
 
     /**
