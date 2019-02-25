@@ -46,9 +46,9 @@ class PengumumanController extends Controller
      * @param  \App\Pengumuman  $pengumuman
      * @return \Illuminate\Http\Response
      */
-    public function show(Pengumuman $pengumuman)
+    public function show($id)
     {
-        return fractal($pengumuman, new PengumumanTransformer())->respond();
+        return fractal(Pengumuman::where([["id", $id], ["user_id", auth()->user()->id]])->firstOrFail(), new PengumumanTransformer())->respond();
     }
 
     /**
