@@ -1,0 +1,145 @@
+FORMAT: 1A
+HOST: http://45.32.105.117:5081/api
+
+# bic
+
+Dokumentasi API pada BIC mobile.
+
+## Register [/register]
+
+### Registrasi Akun Baru [POST]
+
+Digunakan saat user registrasi
+
++ Request (application/json)
+
+        {
+            "name": "Via Vallen",
+            "username": "via",
+            "email": "via@youtube.com",
+            "password": "123456"
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /register
+
+    + Body
+
+            {
+                "ok":{
+                        "token": "[Generated_token]",
+                        "name": "Via Vallen"
+                    }
+            }
+            
+
+## Login [/login]
+
+### Login Akun [POST]
+
+Proses Login
+
++ Request (application/json)
+
+        {
+            "username": "via",
+            "password": "123456"
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /login
+
+    + Body
+
+            {
+                "ok": 
+                    {
+                        "token": "[Generated_token]"
+                    }
+            }
+      
+            
+## Program [/program]
+
+### List Semua Program [GET]
+
+Menampilkan daftar program BIC
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /login
+            Authorization: Bearer [Generated_token]
+
+    + Body
+
+            {
+            "data": [
+                {
+                    "id": 1,
+                    "judul": "SBMPT 2019",
+                    "deskripsi": "Bimbingan di Brawijaya Intensive Centre persiapan Tes Center SBMPTN 2019 untuk Alumni dan SMA XII ada 4 program, yaitu:Super Intensive, Kedokteran, Saintek, Soshum.",
+                    "harga": 0,
+                    "dp": 0,
+                    "created_at": "2019-01-26 00:00:00",
+                    "updated_at": ""
+                },
+                {
+                    "id": 2,
+                    "judul": "Kedinasan",
+                    "deskripsi": "Karantina Kedinasan adalah program yang dikhususkan untuk siswa/i untuk mempersiapan masuk Sekolah Kedinasan, seperti Politeknik Keuangan Negara Sekolah Tinggi Akuntansi Negara (PKN STAN), Institut Pemerintahan Dalam Negeri (IPDN), Sekolah Tinggi Ilmu Statistik (STIS), AKPOL, AKMIL, STEM/Akamigas, POLTEKIP, STKS, STP, Sekolah Tinggi Transportasi Darat (STTD), Sekolah Tinggi Meteorologi Klimatologi dan Geofisika (STMKG), Sekolah Tinggi Sandi Negara (STSN) , Sekolah Tinggi Intelijen Negara (STIN), Politeknik Imigrasi (POLTEKIM)",
+                    "harga": 0,
+                    "dp": 0,
+                    "created_at": "2019-01-26 00:00:00",
+                    "updated_at": ""
+                },
+                {
+                    "id": 3,
+                    "judul": "Mandiri PTN/PTS",
+                    "deskripsi": "Karantina Persiapan ujian Mandiri PTN/ PTS dipersiapakn untuk Siswa/i yang ingin mempersiapakan diri untuk ujian masuk Perguruan tinggi Tes Mandiri baik di PTN/ PTS di Berbagai jurusan terutama Jurusan Pendidikan Dokter Umum",
+                    "harga": 0,
+                    "dp": 0,
+                    "created_at": "2019-01-26 00:00:00",
+                    "updated_at": ""
+                }
+            ]
+            }
+
+
+## Detail Program [/program/1]
+
+### Detail Program [GET]
+
+Menampilkan detail program BIC
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /login
+            Authorization: Bearer [Generated_token]
+
+    + Body
+    
+            {
+            "data": {
+                "id": 1,
+                "judul": "SBMPT 2019",
+                "deskripsi": "Bimbingan di Brawijaya Intensive Centre persiapan Tes Center SBMPTN 2019 untuk Alumni dan SMA XII ada 4 program, yaitu:Super Intensive, Kedokteran, Saintek, Soshum.",
+                "harga": 0,
+                "dp": 0,
+                "created_at": "2019-01-26 00:00:00",
+                "updated_at": ""
+                }
+            }
