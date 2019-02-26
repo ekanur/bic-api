@@ -16,7 +16,7 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        return fractal(Pengumuman::where("user_id", auth()->user()->id)->get(), new PengumumanTransformer())->respond();
+        return fractal(auth()->user()->pengumuman()->orderBy("pengumuman_id", "desc")->get(), new PengumumanTransformer())->respond();
     }
 
     /**
@@ -48,7 +48,8 @@ class PengumumanController extends Controller
      */
     public function show($id)
     {
-        return fractal(Pengumuman::where([["id", $id], ["user_id", auth()->user()->id]])->firstOrFail(), new PengumumanTransformer())->respond();
+        $pengumuman = auth()->user()->pengumuman()->where("pengumuman_id", $id)->firstOrFail();
+        return fractal($pengumuman, new PengumumanTransformer())->respond();
     }
 
     /**

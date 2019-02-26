@@ -45,9 +45,15 @@ $factory->define(App\Bab::class, function(Faker\Generator $faker){
 $factory->define(App\Pengumuman::class, function(Faker\Generator $faker){
     
     return [
+        "judul" => $faker->sentence(3),
+        "pesan" => $faker->realText(100, 2)
+    ];
+});
+
+$factory->define(App\PengumumanUser::class, function(Faker\Generator $faker){
+    return [
+        "pengumuman_id" => App\Pengumuman::all()->random()->id,
         "user_id" => App\User::all()->random()->id,
-        "judul" => "Bab ".$faker->sentence(3),
-        "deskripsi" => $faker->realText(100, 2),
         "unread" => rand(0,1)
     ];
 });

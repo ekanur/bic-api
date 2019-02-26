@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Pengumuman extends Migration
+class PengumumanUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class Pengumuman extends Migration
      */
     public function up()
     {
-        Schema::create('pengumuman', function (Blueprint $table) {
+        Schema::create('pengumuman_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('judul');
-            $table->string("pesan");
+            $table->integer('pengumuman_id');
+            $table->integer('user_id');
+            $table->integer('unread')->default(1);            
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
