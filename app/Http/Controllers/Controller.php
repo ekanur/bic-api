@@ -24,6 +24,6 @@ class Controller extends BaseController
    			return response()->json(["data"=>array("status"=>$status_code, "message"=>'status code '.$status_code.' unavailable')], 500);
    		}
    		
-   		return response()->json(["data"=>array($data)], $status_code);
+   		return response()->json(["data"=>$data], $status_code);
    	}
 }
