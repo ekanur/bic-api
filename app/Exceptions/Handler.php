@@ -47,15 +47,15 @@ class Handler extends ExceptionHandler
     {
         switch (true) {
             case $exception instanceof ModelNotFoundException:
-                return response()->json(['data' => array("error"=>404, "msg"=>'Data not found.')], 404);
+                return response()->json(['data' => array("status"=>404, "message"=>'Data not found.')], 404);
                 # code...
                 break;
             case $exception instanceof AuthenticationException:
-                return response()->json(['data' => array("error"=>401, "msg"=>'Unauthorized access.')], 401);
+                return response()->json(['data' => array("status"=>401, "message"=>'Unauthorized access.')], 401);
                 break;
                 
             default:
-                return response()->json(['data' => array("error"=>500, "msg"=>'Unauthorized access.')], 500);
+                return response()->json(['data' => array("status"=>500, "message"=>'Unauthorized access.')], 500);
                 break;
         }
         return parent::render($request, $exception);

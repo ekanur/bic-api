@@ -19,4 +19,5 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::post('detail', 'API\UserController@detail'); 
     Route::resource('pengumuman', 'API\PengumumanController');
     Route::resource('program', 'API\ProgramController');
+    Route::resource('beasiswa', 'API\BeasiswaController');
 });

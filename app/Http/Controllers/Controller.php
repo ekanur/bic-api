@@ -21,9 +21,9 @@ class Controller extends BaseController
    	public function json($data, $status_code = 200)
    	{
    		if (!array_key_exists($status_code, $this->status)) {
-   			return response()->json([$this->status[500] => 'status code '.$status_code.' unavailable'], 500);
+   			return response()->json(["data"=>array("status"=>$status_code, "message"=>'status code '.$status_code.' unavailable')], 500);
    		}
    		
-   		return response()->json([$this->status[$status_code] => $data], $status_code);
+   		return response()->json(["data"=>array($data)], $status_code);
    	}
 }

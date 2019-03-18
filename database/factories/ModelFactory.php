@@ -57,3 +57,11 @@ $factory->define(App\PengumumanUser::class, function(Faker\Generator $faker){
         "unread" => rand(0,1)
     ];
 });
+
+$factory->define(App\Beasiswa::class, function(Faker\Generator $faker){
+    return [
+        "judul" => $faker->sentence(3),
+        "subtitle" => $faker->sentence(7),
+        "deskripsi" => $faker->realText(100, 2)
+    ];
+});

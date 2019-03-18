@@ -17,7 +17,7 @@ class UserController extends Controller
             return $this->json($success);
         }
         else{
-            return $this->json('Unauthorized', 401);
+            return $this->json(array("messsage"=>'Unauthorized'), 401);
         }
     }
 
@@ -51,7 +51,7 @@ class UserController extends Controller
     public function hasRegistered($request){
     	$user = User::where('username', '=', $request->username)->orWhere('email', '=', $request->email)->count();
 
-    	return ($user > 0) ? true : false ;
+    	return ($user > 0);
     }
 
     public function detail()
