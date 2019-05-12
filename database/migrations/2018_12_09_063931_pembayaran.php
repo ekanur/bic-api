@@ -17,7 +17,10 @@ class Pembayaran extends Migration
             $table->increments('id');
             $table->integer("user_id");
             $table->integer("program_id");
+            $table->integer("bayar");
+            $table->binary("bukti_bayar");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

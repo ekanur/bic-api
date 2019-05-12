@@ -53,9 +53,8 @@ class Handler extends ExceptionHandler
             case $exception instanceof AuthenticationException:
                 return response()->json(['data' => array("status"=>401, "message"=>'Unauthorized access.')], 401);
                 break;
-                
             default:
-                return response()->json(['data' => array("status"=>500, "message"=>'Unauthorized access.')], 500);
+                return response()->json(['data' => array("status"=>500, "message"=>$exception->getMessage())], 500);
                 break;
         }
         return parent::render($request, $exception);

@@ -20,4 +20,6 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::resource('pengumuman', 'API\PengumumanController');
     Route::resource('program', 'API\ProgramController');
     Route::resource('beasiswa', 'API\BeasiswaController');
+    
+    Route::resource('pembayaran', 'API\PembayaranController');
 });
