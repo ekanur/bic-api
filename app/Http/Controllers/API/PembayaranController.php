@@ -65,7 +65,7 @@ class PembayaranController extends Controller
     public function show($id)
     {
         $data = array(
-            "program_id" => $id,
+            "program_id" => (int) $id,
             "user_id" => auth()->user()->id,
             "program" => Program::select("judul")->where("id", $id)->first()
         );
