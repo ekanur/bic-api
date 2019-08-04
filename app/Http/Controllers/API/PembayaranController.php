@@ -41,6 +41,7 @@ class PembayaranController extends Controller
     {
         $validator = $this->validate($request, [
             "program_id" => "required|integer",
+            "tahap" => "required|integer",
             "bayar" => "required|integer",
             "bukti_bayar" => "required|image|max:250",
         ]);
@@ -48,6 +49,7 @@ class PembayaranController extends Controller
         $pembayaran = new Pembayaran();
         $pembayaran->user_id = auth()->user()->id;
         $pembayaran->program_id = $request->program_id;
+        $pembayaran->tahap = $request->tahap;
         $pembayaran->bayar = $request->bayar;
         // $pembayaran->bukti_bayar = (string) Image::make($request->bukti_bayar)->encode("data-url");
         $pembayaran->bukti_bayar = $request->file("bukti_bayar")->store("bukti_bayar");
@@ -64,10 +66,12 @@ class PembayaranController extends Controller
      */
     public function show($id)
     {
+        $pembayaran = Pembayaran::find($id);
         $data = array(
             "program_id" => (int) $id,
-            "user_id" => auth()->user()->id,
-            "program" => Program::select("judul")->where("id", $id)->first()
+            "user_id" => $pembayaran->user_id,
+            "tahap" => (int) $pembayaran->tahap,
+            "program" => $pembayaran->program->judul
         );
 
         return $this->json($data);

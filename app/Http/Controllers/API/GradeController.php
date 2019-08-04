@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Grade;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Transformers\GradeTransformer;
 
 class GradeController extends Controller
 {
@@ -15,7 +16,7 @@ class GradeController extends Controller
      */
     public function index()
     {
-        //
+        return fractal(Grade::all(), new GradeTransformer())->respond();
     }
 
     /**
@@ -47,7 +48,7 @@ class GradeController extends Controller
      */
     public function show(Grade $grade)
     {
-        //
+        return fractal($grade, new GradeTransformer())->respond();
     }
 
     /**

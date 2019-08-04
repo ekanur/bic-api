@@ -65,3 +65,17 @@ $factory->define(App\Beasiswa::class, function(Faker\Generator $faker){
         "deskripsi" => $faker->realText(100, 2)
     ];
 });
+
+$factory->define(App\Grade::class, function(Faker\Generator $faker){
+    $grade_jurusan = array();
+    for($i=0; $i<=rand(3,9); $i++){
+        $grade_jurusan[$i] = array(
+            "jurusan" => "jurusan ".$i,
+            "grade" => rand(55, 100),
+        );
+    }
+    return [
+        "kampus" => $faker->sentence(3),
+        "grade_jurusan" => json_encode($grade_jurusan)
+    ];
+});

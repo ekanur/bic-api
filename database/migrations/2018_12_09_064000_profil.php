@@ -15,7 +15,16 @@ class Profil extends Migration
     {
         Schema::create('profil', function (Blueprint $table) {
             $table->increments('id');
-            
+            $table->string("nama_lengkap");
+            $table->string("foto");
+            $table->string("ttl");
+            $table->string("asal_sekolah");
+            $table->string("no_hp");
+            $table->string("email");
+            $table->string("sosmed");
+            $table->string("detail_ayah");
+            $table->string("detail_ibu");
+            $table->integer("user_id");
             $table->timestamps();
         });
     }
