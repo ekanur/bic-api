@@ -23,4 +23,5 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::resource('grade', 'API\GradeController');
     Route::resource('pembayaran', 'API\PembayaranController');
     Route::resource('profile', 'API\ProfileController');
+    Route::get("my_profile", "API\ProfileController@myProfile");
 });

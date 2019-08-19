@@ -51,7 +51,6 @@ class PembayaranController extends Controller
         $pembayaran->program_id = $request->program_id;
         $pembayaran->tahap = $request->tahap;
         $pembayaran->bayar = $request->bayar;
-        // $pembayaran->bukti_bayar = (string) Image::make($request->bukti_bayar)->encode("data-url");
         $pembayaran->bukti_bayar = $request->file("bukti_bayar")->store("bukti_bayar");
         $pembayaran->save();
 
