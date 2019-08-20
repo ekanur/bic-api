@@ -64,18 +64,18 @@ class ProfileController extends Controller
         $detail_ayah = array(
             "nama" => ((null !== $request->nama_ayah)?$request->nama_ayah:null),
             "pekerjaan" => (null !== ($request->pekerjaan_ayah)?$request->pekerjaan_ayah:null),
-            "foto" => (null !== ($request->file("foto_ayah"))?$request->file("foto_ayah")->store("foto_ayah"):null),
+            "foto" => (null !== ($request->file("foto_ayah"))?$request->file("foto_ayah")->store("public/foto_ayah"):null),
         );
         $detail_ibu = array(
             "nama" => (null !== ($request->nama_ibu)?$request->nama_ibu:null),
             "pekerjaan" => (null !== ($request->pekerjaan_ibu)?$request->pekerjaan_ibu:null),
-            "foto" => (null !== ($request->file("foto_ibu"))?$request->file("foto_ibu")->store("foto_ibu"):null),
+            "foto" => (null !== ($request->file("foto_ibu"))?$request->file("foto_ibu")->store("public/foto_ibu"):null),
         );
 
         $profil = Profile::updateOrCreate(["user_id" => auth()->user()->id],
             [
                 "nama_lengkap" => $request->nama_lengkap,
-                "foto" => (null !== $request->file("foto")?$request->file("foto")->store("foto"):$request->foto_lama),
+                "foto" => (null !== $request->file("foto")?$request->file("foto")->store("public/foto"):$request->foto_lama),
                 "ttl" => $request->tempat_lahir.", ".$request->tanggal_lahir,
                 "asal_sekolah" => $request->asal_sekolah,
                 "no_hp" => $request->no_hp,
