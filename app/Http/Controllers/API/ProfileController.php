@@ -39,7 +39,7 @@ class ProfileController extends Controller
         // dd($request);
         $validator = $this->validate($request, [
             "nama_lengkap" => "required|string|min:3",
-            "foto" => "required|image|max:800",
+            "foto" => "nullable|image|max:800",
             "tempat_lahir" => "required|string|min:3",
             "tanggal_lahir" => "required",
             "asal_sekolah" => "required|min:7",
@@ -72,19 +72,20 @@ class ProfileController extends Controller
             "foto" => (null !== ($request->file("foto_ibu"))?$request->file("foto_ibu")->store("foto_ibu"):null),
         );
 
-        $profil = new Profile;
-        $profil->nama_lengkap = $request->nama_lengkap;
-        $profil->user_id = auth()->user()->id;
-        $profil->foto = $request->file("foto")->store("foto");
-        $profil->ttl = $request->tempat_lahir.", ".$request->tanggal_lahir;
-        $profil->asal_sekolah = $request->asal_sekolah;
-        $profil->no_hp = $request->no_hp;
-        $profil->email = $request->email;
-        $profil->sosmed = json_encode($sosmed);
-        $profil->detail_ayah = json_encode($detail_ayah);
-        $profil->detail_ibu = json_encode($detail_ibu);
-
-        $profil->save();
+        $profil = Profile::updateOrCreate(["user_id" => auth()->user()->id],
+            [
+                "nama_lengkap" => $request->nama_lengkap,
+                "foto" => (null !== $request->file("foto")?$request->file("foto")->store("foto"):$request->foto_lama),
+                "ttl" => $request->tempat_lahir.", ".$request->tanggal_lahir,
+                "asal_sekolah" => $request->asal_sekolah,
+                "no_hp" => $request->no_hp,
+                "email" => $request->email,
+                "sosmed" => json_encode($sosmed),
+                "detail_ayah" => json_encode($detail_ayah),
+                "detail_ibu" => json_encode($detail_ibu),
+                "user_id" => auth()->user()->id
+            ]);
+    
         return $this->json(array("message"=>"Profil Berhasil Disimpan"));
     }
 
